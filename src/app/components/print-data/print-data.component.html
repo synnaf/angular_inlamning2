@@ -1,0 +1,22 @@
+<p>Hejhej</p>
+<main>
+  <section *ngIf="movieList">
+    <!-- Product  -->
+    <div *ngFor="let movie of movieList" class="product-card">
+      <div class="placeholder">
+        <img src="{{ movie. movieImage }}">
+        {{ movie.movieName }}
+        {{ movie.moviePrice }}
+      </div>
+      <div class="product-buttons">
+
+        <button type="button" (click)="addToCart(movie)">Add to cart</button>
+        <button type="button"><a routerLink="{{ movie.movieId }}">About</a></button>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+
+

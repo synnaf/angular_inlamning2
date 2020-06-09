@@ -1,0 +1,48 @@
+section {
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  .shoppingcart{
+    display: flex;
+    flex-direction:column;
+    width:40%;
+    margin:50px;
+    .cart-item{
+      display: flex;
+      flex-direction:row;
+      border:0.5px solid lightgray;
+      margin-bottom:20px;
+      .item-info{
+        font-family: sans-serif;
+        margin-left:15px;
+        width:60%;
+        h4 {
+          color:lightskyblue;
+          margin-bottom:0;
+        }
+      }
+      .edit-item {
+        display: flex;
+        flex-direction:row;
+        align-content: end;
+        width:30%;
+        button{
+          text-align: center;
+          width:50%;
+          border:0.5px solid lightgray;
+          height:100%;
+          cursor: pointer;
+          font-size: 1rem;
+          font-weight: bold;
+        }
+      }
+      .placeholder {
+        background-color:pink;
+        img {
+          height:80px;
+        }
+      }
+    }
+  }
+}
+

@@ -1,0 +1,20 @@
+
+<main>
+  <div>
+    <h3>Welcome, admin</h3>
+  </div>
+
+  <section>
+    <div>
+      <p>Placed orders:</p>
+      <ul *ngFor="let order of orderList">
+        <li>
+          Company: {{ order.companyId }}
+          <button>Edit</button>
+          <button>Delete</button>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+</main>

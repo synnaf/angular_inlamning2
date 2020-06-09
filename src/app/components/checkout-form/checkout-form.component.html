@@ -1,0 +1,61 @@
+<p>checkout-form works!</p>
+
+
+
+<form  [formGroup]="orderForm" (ngSubmit)="placeOrder()">
+
+  <label for="products">Products:</label>
+  <!-- hämta in shoppingcart och visa listan -->
+  <div>
+    <ul *ngFor="let item of cartItems">
+      <li>
+        {{ item.movieName }}
+        {{ item.moviePrice }}
+      </li>
+    </ul>
+  </div>
+
+  <!-- Grupp 1 HIDDEN INFO -->
+  <div formGroupName="orderFirst">
+
+    <label for="orderId">Order Id:</label>
+    <input type="number" formControlName="orderId" />
+
+    <label for="companyId">Company Id:</label>
+    <input type="number" formControlName="companyId"/>
+
+    <label for="orderDate">Order date:</label>
+    <input type="date" formControlName="orderDate" />
+
+    <label for="orderStatus">Order status:</label>
+    <input type="number" formControlName="orderStatus"/>
+
+  </div>
+
+  <!-- Grupp 2  CUSTOMER INFO -->
+  <div formGroupName="orderSecond">
+
+    <label>Firstname:</label>
+    <input type="text" formControlName="customerName"/>
+    <label>Lastname:</label>
+    <input type="text" formControlName="customerLastName"/>
+    <label>Email:</label>
+    <input type="email" formControlName="customerEmail"/>
+
+  </div>
+
+
+  <div formGroupName="orderThird">
+    <label>Payment info:</label>
+    <input type="text" formControlName="customerPayment"/>
+
+      <label>Total price:</label>
+      <input type="text" formControlName="orderPrice" />
+  </div>
+
+
+  <button type="submit">BUY</button>
+
+</form>
+
+

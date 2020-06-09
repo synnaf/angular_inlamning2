@@ -1,0 +1,33 @@
+<main>
+  <section *ngIf="cartItems">
+    <div *ngFor="let item of cartItems" class="shoppingcart">
+      <div class="cart-item">
+        <div class="placeholder">
+          <img src="{{ item.movieImage }}">
+        </div>
+        <div class="item-info">
+          <h4>
+            {{ item.movieName }}
+          </h4>
+          <span>
+            Quantity: {{ item.quantity }}
+          </span>
+        </div>
+        <div class="edit-item">
+          <button (click)="increase(item)">+</button>
+          <button (click)="decrease(item)">-</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section *ngIf="cartItems.length === 0">
+    <div class="shoppingcart">
+      <div class="placeholder-text">
+        <h4>Cart is empty!</h4>
+      </div>
+    </div>
+  </section>
+  <section>
+
+  </section>
+</main>
