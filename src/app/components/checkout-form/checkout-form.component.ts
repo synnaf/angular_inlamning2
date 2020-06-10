@@ -13,6 +13,7 @@ import { ShoppingcartService } from 'src/app/services/shoppingcart/shoppingcart.
 export class CheckoutFormComponent implements OnInit {
   cartItems;
 
+
   // tom lista som följer Order modellen
   orders: Order[] = [];
 
@@ -20,10 +21,9 @@ export class CheckoutFormComponent implements OnInit {
   // värdet för egenskapen är en array, första värdet är startvärdet
   // andra värdet är validering
   orderForm = this.fb.group({
-    // products: this.fb.array([]),
-
+    products: this.fb.array([this.cartItems]),
     orderFirst: this.fb.group({
-      orderId: [0],
+      orderId: [''],
       companyId: [666],
       orderDate: [Date.now()],
       orderStatus: ['']
@@ -50,7 +50,6 @@ export class CheckoutFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private cart: ShoppingcartService,
-    private orderService: Order
     ) { }
 
   ngOnInit(): void {
@@ -60,7 +59,7 @@ export class CheckoutFormComponent implements OnInit {
   }
 
 
-  //funktion som körs när man trycker BUY
+  // funktion som körs när man trycker BUY
 
   placeOrder() {
     console.log(this.orderForm.value);
@@ -68,7 +67,10 @@ export class CheckoutFormComponent implements OnInit {
     // skickar in orderForms'värden till listan orders?
     this.orders.push(this.orderForm.value);
 
-    // this.orderService.;
+    // här vill vi skicka till vår orderService det som finns i formuläret
+    // i order service körs sedan anropet till http
+
+
 
   }
 

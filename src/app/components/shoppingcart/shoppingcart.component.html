@@ -11,6 +11,7 @@
           </h4>
           <span>
             Quantity: {{ item.quantity }}
+            Total sum: {{ item.sum }}
           </span>
         </div>
         <div class="edit-item">
@@ -19,15 +20,20 @@
         </div>
       </div>
     </div>
-  </section>
-  <section *ngIf="cartItems.length === 0">
-    <div class="shoppingcart">
-      <div class="placeholder-text">
-        <h4>Cart is empty!</h4>
+    <section *ngIf="cartItems.length === 0">
+      <div class="shoppingcart">
+        <div class="placeholder-text">
+          <h4>Cart is empty!</h4>
+        </div>
       </div>
+    </section>
+    <div>
+      <button [disabled]="cartItems.length < 1">Checkout</button>
     </div>
   </section>
-  <section>
 
+  <!-- har laddas checkout-form, borde man skicka med shoppingcart? -->
+  <section>
+    <app-checkout-form></app-checkout-form>
   </section>
 </main>

@@ -26,7 +26,6 @@ export class ShoppingcartComponent implements OnInit {
 
   increase(item) {
     this.cartItems = this.cartService.increaseCartItem(item);
-
   }
 
   decrease(item) {

@@ -1,11 +1,7 @@
-<p>checkout-form works!</p>
-
-
 
 <form  [formGroup]="orderForm" (ngSubmit)="placeOrder()">
 
   <label for="products">Products:</label>
-  <!-- hämta in shoppingcart och visa listan -->
   <div>
     <ul *ngFor="let item of cartItems">
       <li>

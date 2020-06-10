@@ -19,7 +19,6 @@ export class ShoppingcartService implements IShoppingcart {
 
     // vi kontrollerar om filmen redan finns
     this.movieInCart = this.cartList.find((m) => m.movieId === movie.movieId);
-
     console.log(this.movieInCart + ' Undefined är ok, finns ej i korgen'); // denna är undefined första gången, hittas andra gången
 
     // om filmen inte finns i cart
@@ -30,10 +29,8 @@ export class ShoppingcartService implements IShoppingcart {
           quantity: 1,
           sum: movie.moviePrice
         });
-
         console.log(this.movieInCart); // denna är undefined första gången
         // denna körs ej andra gången?
-
         return; // varför?
     }
     this.increaseCartItem(this.movieInCart);
@@ -48,13 +45,9 @@ export class ShoppingcartService implements IShoppingcart {
   increaseCartItem(item: Cart) {
     this.movieInCart = this.cartList.find((m) => m.movieId === item.movieId);
     this.movieInCart.quantity++,
+    this.movieInCart.sum =  this.movieInCart.quantity * this.movieInCart.moviePrice;
 
     console.log(this.movieInCart.quantity);
-    // this.movieInCart = this.cartList.find((m) => m.movieId === item.movieId);
-    // console.log(this.movieInCart); // denna hittas andra gången
-    // this.movieInCart.quantity++;
-    // // denna ska räkna ut summan, så priset måste vara tillgängligt
-    // this.movieInCart.sum = this.movieInCart.quantity * this.movieInCart.quantity;
     return this.cartList;
   }
 
@@ -62,6 +55,7 @@ export class ShoppingcartService implements IShoppingcart {
     this.movieInCart = item;
     if (this.movieInCart.quantity > 1) {
       this.movieInCart.quantity--;
+      this.movieInCart.sum =  this.movieInCart.quantity * this.movieInCart.moviePrice;
       return this.cartList;
     } else {
       this.cartList = this.cartList.filter((ritem) =>
@@ -70,7 +64,6 @@ export class ShoppingcartService implements IShoppingcart {
       return this.cartList;
     }
   }
-
 
 
   // problemet här är att den inte registrerar quantity = 0,
