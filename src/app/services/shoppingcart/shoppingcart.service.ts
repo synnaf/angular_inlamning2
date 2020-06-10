@@ -60,14 +60,17 @@ export class ShoppingcartService implements IShoppingcart {
 
   decreaseItems(item: Cart) {
     this.movieInCart = item;
-    if (this.movieInCart.quantity >= 1) {
+    if (this.movieInCart.quantity > 1) {
       this.movieInCart.quantity--;
       return this.cartList;
     } else {
-    this.removeItemFromCart();
-    // return this.cartList;
+      this.cartList = this.cartList.filter((ritem) =>
+      this.movieInCart.movieId !== ritem.movieId);
+      console.log(this.cartList);
+      return this.cartList;
     }
   }
+
 
 
   // problemet här är att den inte registrerar quantity = 0,
@@ -78,19 +81,26 @@ export class ShoppingcartService implements IShoppingcart {
         dvs. att den först går igenom och kollar quantity? Kanske ska man visa en annan knapp?  */
 
 
-  removeItemFromCart() {
+  // removeItemFromCart(movieInCart) {
 
-    if (this.movieInCart.quantity == 0) {
+  //     console.log(movieInCart);
 
-      // console.log(this.cartList);
+  //     // let removeIndex = this.cartList.map((item) =>  item.movieId ).indexOf(this.movieInCart.movieId);
+  //     // this.cartList.splice(removeIndex, 1);
 
-      this.cartList = this.cartList.filter(
-        (item: Cart) => this.movieInCart.movieId !== item.movieId
-      );
-    }
-    console.log(this.cartList);
-    return this.cartList;
-  }
+  //     // get index of object with id:37
+  //     // var removeIndex = this.cartList.map((item) => {
+  //     //   this.movieInCart.movieId == item.movieId;
+
+  //     // })
+
+  //     // this.cartList = this.cartList.filter(
+  //     //   (item) => this.movieInCart.movieId !== item.movieId
+  //     // );
+
+  //   return this.cartList;
+
+  // }
 
 
 }
