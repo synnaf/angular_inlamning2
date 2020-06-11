@@ -6,7 +6,7 @@ export class Order {
   orderId: number;
   companyId: number;
   createdBy: string;
-  created: string;
+  created: Date;
   paymentMethod: string;
   totalPrice: number;
   status: number;

@@ -9,7 +9,11 @@
       <p>Placed orders:</p>
       <ul *ngFor="let order of orderList">
         <li>
-          Company: {{ order.companyId }}
+          <h3>Order Id: {{ order.orderId }}</h3>
+          <h5>Status: {{ order.status }}</h5>
+          <p>Customer: {{ order.createdBy }}</p>
+          <p>Date: {{ order.created | date }}</p>
+
           <button>Edit</button>
           <button>Delete</button>
         </li>

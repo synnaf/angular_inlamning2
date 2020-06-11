@@ -42,13 +42,14 @@ export class CheckoutFormComponent implements OnInit {
   placeOrder() {
 
     const customerDetails = this.orderForm.value;
+    const orderDate = new Date();
 
     // newOrder är infon från formuläret
     const newOrder = {
       orderId: 123,
       companyId: 666,
       createdBy: customerDetails.customerEmail,
-      created: '0001-01-01 T00:00:00',
+      created: orderDate,
       paymentMethod: customerDetails.customerPayment,
       totalPrice: 999,
       status: 0,

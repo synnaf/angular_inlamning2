@@ -12,13 +12,13 @@ export class ShoppingcartService implements IShoppingcart {
   cartList: Cart[] = [];
   movieInCart: Cart;
   cartSource = new Subject<Cart[]>();
+  totalList = [];
   constructor() { }
 
   // vi tar emot en movie av typen Movie
   addToCart(movie: Movie) {
     // vi kontrollerar om filmen redan finns
     this.movieInCart = this.cartList.find((m) => m.movieId === movie.movieId);
-    console.log(this.movieInCart + ' Undefined är ok, finns ej i korgen'); // denna är undefined första gången, hittas andra gången
 
     // om filmen inte finns i cart
     if (!this.movieInCart) {
@@ -28,27 +28,39 @@ export class ShoppingcartService implements IShoppingcart {
           quantity: 1,
           sum: movie.moviePrice
         });
-        console.log(this.movieInCart); // denna är undefined första gången
-        // denna körs ej andra gången?
         return; // varför?
     }
     this.increaseCartItem(this.movieInCart);
-    // här görs en ökning?
   }
 
   showItems() {
-    return this.cartList;
+    this.totalSum();
+    return this.cartList ;
   }
 
   // här är funktionen som lägger en existerande produkt i varukorgen
   increaseCartItem(item: Cart) {
     this.movieInCart = this.cartList.find((m) => m.movieId === item.movieId);
-    this.movieInCart.quantity++,
-    this.movieInCart.sum =  this.movieInCart.quantity * this.movieInCart.moviePrice;
-
-    console.log(this.movieInCart.quantity);
+    this.movieInCart.quantity++;
     return this.cartList;
   }
+
+
+  totalSum() {
+    // funktion som skriver ut totalsumman
+    this.cartList.map((sumOfEach) => {
+      this.totalList.push(sumOfEach.sum);
+    });
+
+    // här är uträkningen
+    let totalOfCart = this.totalList
+    .reduce((productSum, productTotal) => +productSum + +productTotal, 0);
+    console.log(totalOfCart);
+    return totalOfCart;
+
+    // skriv ut array med total summa
+  }
+
 
   decreaseItems(item: Cart) {
     this.movieInCart = item;
@@ -59,7 +71,6 @@ export class ShoppingcartService implements IShoppingcart {
     } else {
       this.cartList = this.cartList.filter((ritem) =>
       this.movieInCart.movieId !== ritem.movieId);
-      console.log(this.cartList);
       return this.cartList;
     }
   }
@@ -93,6 +104,5 @@ export class ShoppingcartService implements IShoppingcart {
   //   return this.cartList;
 
   // }
-
 
 }
