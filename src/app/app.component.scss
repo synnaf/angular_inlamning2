@@ -1,0 +1,22 @@
+nav {
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+  text-align: left;
+  width:40%;
+  border:4px solid rgb(92, 92, 201);
+  box-shadow: 4px 4px rgb(92, 92, 201);
+  a {
+  text-align: center;
+  width:100%;
+  color:rgb(92, 92, 201);
+  padding:8px;
+  font-weight: bold;
+  font-size: 1rem;
+  text-decoration: none;
+  }
+  a:hover {
+    background-color:black;
+    color:white;
+  }
+}
