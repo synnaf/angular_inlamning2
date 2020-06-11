@@ -42,91 +42,31 @@ export class CheckoutFormComponent implements OnInit {
   placeOrder() {
 
     const customerDetails = this.orderForm.value;
-    const orderProducts = [];
 
     // newOrder är infon från formuläret
-    const newOrder: Order = {
-      orderId: 22,
+    const newOrder = {
+      orderId: 123,
       companyId: 666,
       createdBy: customerDetails.customerEmail,
-      created: "0001-01-01 T00:00:00",
+      created: '0001-01-01 T00:00:00',
       paymentMethod: customerDetails.customerPayment,
-      totalPrice: 22,
+      totalPrice: 999,
       status: 0,
-      products: orderProducts
+      products: []
     };
 
+
     const detailsProducts = this.cartItems.map((movie) => {
-      return { productId: movie.movieId, product: movie.movieName, amount: movie.quantity, orderId: 22 };
-    });
-
-    detailsProducts.forEach((product) => {
-      newOrder.products.push(product);
+      return { productId: movie.movieId, amount: movie.quantity, orderId: 22 };
     });
 
 
-    console.log(newOrder.products);
 
-    /*products:
-    en array av objekt, varje objekt är en produkt från varukorgen */
-    // loopa igenom produkterna och skapa upp ett nytt objekt
+    detailsProducts.forEach((orderedProduct) => {
+      newOrder.products.push(orderedProduct);
+    });
 
-
-
-    // "orderRows":[
-    //   {
-    //     "id":5370,
-    //     "productId":76,
-    //     "product":null,
-    //     "amount":0,
-    //     "orderId":4655
-    //   },
-    //   {
-    //     "id":5371,
-    //     "productId":78,
-    //     "product":null,
-    //     "amount":0,
-    //     "orderId":4655}
-    // ]
-
-
-    // en order som består av:
-    /*
-      orderID: startvärde
-      companyId: startvärde
-
-      createdBy: customer
-      paymentMehtod: customer
-
-      totalPrice: Cart
-      status: startvärde
-
-      orderRows:det som finns i Cart
-
-      */
-
-
-    // formulärets products blir detsamma som cartItems
-    // newOrder.products = this.cartItems.map((movie) => {
-    //   return { productId: movie.movieId, amount: movie.quantity };
-    // });
-
-    // glöm inte att tömma denna array när vi är klara
-
-  //   newOrder.totalPrice =  this.totalPrice;
-  //   newOrder.products = [];
-
-  //   const products = this.cartItems.map((m) => {
-  //     return { productId: m.movieId, amount: m.quantity };
-  //   });
-
-  //   products.forEach(product=> {
-  //   newOrder.products.push(product)
-
-  // });
-
-    // i order service körs sedan anropet till http
-
+    console.log(newOrder);
     this.order.createOrder(newOrder);
 
   }

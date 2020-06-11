@@ -1,8 +1,6 @@
 
 <form  [formGroup]="orderForm" (ngSubmit)="placeOrder()">
-
-  <!-- Grupp  CUSTOMER INFO -->
-  <div>
+  <div class="checkout-userInfo">
     <label>Firstname:</label>
     <input type="text" formControlName="customerName"/>
     <label>Lastname:</label>
@@ -12,7 +10,7 @@
   </div>
 
 
-  <div>
+  <div class="checkout-userPayment">
     <label>Payment method:</label>
     <input type="radio" formControlName="customerPayment" value="visa" />Visa
     <input type="radio" formControlName="customerPayment" value="mastercard" />MasterCard

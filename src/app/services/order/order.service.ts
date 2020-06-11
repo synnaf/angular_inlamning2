@@ -18,7 +18,7 @@ export class OrderService implements IOrder{
   showOrders(): void {
     // skickar en request efter mitt companyId
 
-    this.http.get('https://medieinstitutet-wie-products.azurewebsites.net/api/orders?companyId=0')
+    this.http.get('https://medieinstitutet-wie-products.azurewebsites.net/api/orders?companyId=666')
     .subscribe((orderData: any) => {
       const ordersFromApi: Order[] = orderData.map(order => {
         const orderFromApi = new Order();
@@ -39,8 +39,7 @@ export class OrderService implements IOrder{
   createOrder(order: Order) {
 
     // visar order som kommer ifrån placeOrder > newOrder
-    console.log(order.products);
-
+    console.log(order);
 
     this.http.post('https://medieinstitutet-wie-products.azurewebsites.net/api/orders', {
       orderId: 2,
