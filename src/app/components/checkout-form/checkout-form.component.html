@@ -1,17 +1,40 @@
 
 <form  [formGroup]="orderForm" (ngSubmit)="placeOrder()">
 
-  <label for="products">Products:</label>
+  <!-- Grupp  CUSTOMER INFO -->
+  <div>
+    <label>Firstname:</label>
+    <input type="text" formControlName="customerName"/>
+    <label>Lastname:</label>
+    <input type="text" formControlName="customerLastName"/>
+    <label>Email:</label>
+    <input type="email" formControlName="customerEmail"/>
+  </div>
+
+
+  <div>
+    <label>Payment method:</label>
+    <input type="radio" formControlName="customerPayment" value="visa" />Visa
+    <input type="radio" formControlName="customerPayment" value="mastercard" />MasterCard
+    <input type="radio" formControlName="customerPayment" value="faktura" />Faktura
+  </div>
+
+
+  <button type="submit">BUY</button>
+</form>
+
+
+  <!-- <label for="products">Products:</label>
   <div>
     <ul *ngFor="let item of cartItems">
       <li>
-        {{ item.movieName }}
-        {{ item.moviePrice }}
+        Name: {{ item.movieName }}
+        Quantity: {{ item.quantity }}
       </li>
     </ul>
-  </div>
+  </div> -->
 
-  <!-- Grupp 1 HIDDEN INFO -->
+  <!-- Grupp 1 HIDDEN INFO
   <div formGroupName="orderFirst">
 
     <label for="orderId">Order Id:</label>
@@ -26,32 +49,4 @@
     <label for="orderStatus">Order status:</label>
     <input type="number" formControlName="orderStatus"/>
 
-  </div>
-
-  <!-- Grupp 2  CUSTOMER INFO -->
-  <div formGroupName="orderSecond">
-
-    <label>Firstname:</label>
-    <input type="text" formControlName="customerName"/>
-    <label>Lastname:</label>
-    <input type="text" formControlName="customerLastName"/>
-    <label>Email:</label>
-    <input type="email" formControlName="customerEmail"/>
-
-  </div>
-
-
-  <div formGroupName="orderThird">
-    <label>Payment info:</label>
-    <input type="text" formControlName="customerPayment"/>
-
-      <label>Total price:</label>
-      <input type="text" formControlName="orderPrice" />
-  </div>
-
-
-  <button type="submit">BUY</button>
-
-</form>
-
-
+  </div> -->

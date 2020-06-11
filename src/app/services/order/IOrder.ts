@@ -4,4 +4,5 @@ import { Order } from '../../models/Order';
 export default interface IOrder {
   orderList: Subject<Order[]>;
   showOrders(): void;
+  createOrder(order);
 }

@@ -16,7 +16,6 @@ export class ShoppingcartService implements IShoppingcart {
 
   // vi tar emot en movie av typen Movie
   addToCart(movie: Movie) {
-
     // vi kontrollerar om filmen redan finns
     this.movieInCart = this.cartList.find((m) => m.movieId === movie.movieId);
     console.log(this.movieInCart + ' Undefined är ok, finns ej i korgen'); // denna är undefined första gången, hittas andra gången
