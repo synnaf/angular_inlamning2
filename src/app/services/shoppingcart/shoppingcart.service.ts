@@ -40,25 +40,11 @@ export class ShoppingcartService implements IShoppingcart {
     return this.cartList ;
   }
 
-  // här är funktionen som lägger en existerande produkt i varukorgen
   increaseCartItem(item: Cart) {
     this.movieInCart = this.cartList.find((m) => m.movieId === item.movieId);
     this.movieInCart.quantity++;
     this.totalSum();
     return this.cartList;
-  }
-
-
-  totalSum() {
-    // funktion som skriver ut totalsumman
-    // skriv ut array med total summa OSCARS VERSION
-      let calcPrice = 0;
-      this.cartList.forEach((cartItems) => {
-        calcPrice += cartItems.quantity * cartItems.moviePrice;
-      });
-      this.totalPrice = calcPrice;
-      console.log(this.totalPrice);
-
   }
 
 
@@ -75,34 +61,15 @@ export class ShoppingcartService implements IShoppingcart {
     }
   }
 
+  totalSum() {
+  // funktion som skriver ut totalsumman
+    let calcPrice = 0;
+    this.cartList.forEach((cartItems) => {
+      calcPrice += cartItems.quantity * cartItems.moviePrice;
+    });
+    this.totalPrice = calcPrice;
+    console.log(this.totalPrice);
+  }
 
-  // problemet här är att den inte registrerar quantity = 0,
-  // utan den tolkar det som att när det ser ut som 0 så är det egentligen 1
-  // alternativ att testa:
-  /* 1. se om det har med array att göra? att noll och null ej e samma */
-  /* 2. se om det har med -knappen att göra?
-        dvs. att den först går igenom och kollar quantity? Kanske ska man visa en annan knapp?  */
-
-
-  // removeItemFromCart(movieInCart) {
-
-  //     console.log(movieInCart);
-
-  //     // let removeIndex = this.cartList.map((item) =>  item.movieId ).indexOf(this.movieInCart.movieId);
-  //     // this.cartList.splice(removeIndex, 1);
-
-  //     // get index of object with id:37
-  //     // var removeIndex = this.cartList.map((item) => {
-  //     //   this.movieInCart.movieId == item.movieId;
-
-  //     // })
-
-  //     // this.cartList = this.cartList.filter(
-  //     //   (item) => this.movieInCart.movieId !== item.movieId
-  //     // );
-
-  //   return this.cartList;
-
-  // }
 
 }

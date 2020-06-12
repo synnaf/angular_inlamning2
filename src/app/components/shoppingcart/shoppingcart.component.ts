@@ -11,6 +11,7 @@ import { Cart } from 'src/app/models/Cart';
 export class ShoppingcartComponent implements OnInit {
 
   cartItems;
+  cartTotal;
 
   constructor(private cartService: ShoppingcartService) { }
 
@@ -21,15 +22,18 @@ export class ShoppingcartComponent implements OnInit {
     });
 
     this.cartItems = this.cartService.showItems();
+    this.cartTotal = this.cartService.totalPrice;
   }
 
   increase(item) {
     this.cartItems = this.cartService.increaseCartItem(item);
+    this.cartTotal = this.cartService.totalPrice;
   }
 
   decrease(item) {
     this.cartItems = this.cartService.decreaseItems(item);
     console.log(item.quantity);
+    this.cartTotal = this.cartService.totalPrice;
   }
 
 }

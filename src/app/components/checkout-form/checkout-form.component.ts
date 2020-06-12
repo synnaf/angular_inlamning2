@@ -46,12 +46,11 @@ export class CheckoutFormComponent implements OnInit {
 
     // newOrder är infon från formuläret
     const newOrder = {
-      orderId: 123,
       companyId: 666,
       createdBy: customerDetails.customerEmail,
       created: orderDate,
       paymentMethod: customerDetails.customerPayment,
-      totalPrice: 999,
+      totalPrice: this.cart.totalPrice,
       status: 0,
       products: []
     };
