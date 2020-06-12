@@ -23,7 +23,6 @@ export class ShoppingcartComponent implements OnInit {
     this.cartItems = this.cartService.showItems();
   }
 
-
   increase(item) {
     this.cartItems = this.cartService.increaseCartItem(item);
   }

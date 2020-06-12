@@ -13,6 +13,7 @@ export class ShoppingcartService implements IShoppingcart {
   movieInCart: Cart;
   cartSource = new Subject<Cart[]>();
   totalList = [];
+  totalPrice: number = 0;
   constructor() { }
 
   // vi tar emot en movie av typen Movie
@@ -30,6 +31,7 @@ export class ShoppingcartService implements IShoppingcart {
         });
         return; // varför?
     }
+    this.totalSum();
     this.increaseCartItem(this.movieInCart);
   }
 
@@ -42,23 +44,21 @@ export class ShoppingcartService implements IShoppingcart {
   increaseCartItem(item: Cart) {
     this.movieInCart = this.cartList.find((m) => m.movieId === item.movieId);
     this.movieInCart.quantity++;
+    this.totalSum();
     return this.cartList;
   }
 
 
   totalSum() {
     // funktion som skriver ut totalsumman
-    this.cartList.map((sumOfEach) => {
-      this.totalList.push(sumOfEach.sum);
-    });
+    // skriv ut array med total summa OSCARS VERSION
+      let calcPrice = 0;
+      this.cartList.forEach((cartItems) => {
+        calcPrice += cartItems.quantity * cartItems.moviePrice;
+      });
+      this.totalPrice = calcPrice;
+      console.log(this.totalPrice);
 
-    // här är uträkningen
-    let totalOfCart = this.totalList
-    .reduce((productSum, productTotal) => +productSum + +productTotal, 0);
-    console.log(totalOfCart);
-    return totalOfCart;
-
-    // skriv ut array med total summa
   }
 
 

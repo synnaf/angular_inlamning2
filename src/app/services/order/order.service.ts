@@ -3,12 +3,12 @@ import IOrder from './IOrder';
 import { Order } from 'src/app/models/Order';
 import { Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { Cart } from 'src/app/models/Cart';
 
 @Injectable({
   providedIn: 'root'
 })
-export class OrderService implements IOrder{
+
+export class OrderService implements IOrder {
 
   // orderList prenumererar på ämnen av typen Order-Array
   orderList: Subject<Order[]> = new Subject<Order[]>();
@@ -54,8 +54,8 @@ export class OrderService implements IOrder{
     .subscribe((data) => {
       console.log(data)
     });
-
   }
+
 
 }
 
