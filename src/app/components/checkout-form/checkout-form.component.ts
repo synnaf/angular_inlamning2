@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { validatorTest } from '../../validators/validatorTest';
 import { Order } from 'src/app/models/Order';
 import { ShoppingcartService } from 'src/app/services/shoppingcart/shoppingcart.service';
@@ -22,7 +22,7 @@ export class CheckoutFormComponent implements OnInit {
   orderForm = this.fb.group({
       customerName: [''],
       customerLastName: ['', [Validators.required, Validators.minLength(3)]],
-      customerEmail: ['', [Validators.required, validatorTest()]],
+      customerEmail: ['', [Validators.required, Validators.email]],
       customerPayment: ['', Validators.required]
   });
 
@@ -39,10 +39,13 @@ export class CheckoutFormComponent implements OnInit {
   }
 
   get customerEmail() {
-    return this.orderForm.get('customerEmail');
+    return this.orderForm.get('customerEmail') as FormControl;
   }
   get customerLastName() {
-    return this.orderForm.get('customerLastName');
+    return this.orderForm.get('customerLastName') as FormControl;
+  }
+  get customerPayment() {
+    return this.orderForm.get('customerPayment') as FormControl;
   }
 
   // funktion som körs när man trycker BUY

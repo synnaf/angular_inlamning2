@@ -41,18 +41,18 @@ export class OrderService implements IOrder {
     // visar order som kommer ifrån placeOrder > newOrder
     console.log(order);
 
-    this.http.post('https://medieinstitutet-wie-products.azurewebsites.net/api/orders', {
-      companyId: 666,
-      created: order.created,
-      createdBy: order.createdBy,
-      paymentMethod: order.paymentMethod,
-      totalPrice: order.totalPrice,
-      status: order.status,
-      orderRows: order.products,
-    })
-    .subscribe((data) => {
-      console.log(data)
-    });
+  //   this.http.post('https://medieinstitutet-wie-products.azurewebsites.net/api/orders', {
+  //     companyId: 666,
+  //     created: order.created,
+  //     createdBy: order.createdBy,
+  //     paymentMethod: order.paymentMethod,
+  //     totalPrice: order.totalPrice,
+  //     status: order.status,
+  //     orderRows: order.products,
+  //   })
+  //   .subscribe((data) => {
+  //     console.log(data)
+  //   });
   }
 
 

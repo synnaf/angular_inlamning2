@@ -7,18 +7,28 @@
     <label>Lastname:</label>
     <input type="text" id="customerLastName" formControlName="customerLastName"/>
 
-    <div *ngIf="customerLastName.errors.minlength">
-      A lastname must be at least 3 characters long.
-    </div>
-    <div *ngIf="customerLastName.errors.required">
-      A lastname is required.
-    </div>
-
     <label>Email:</label>
     <input type="email" formControlName="customerEmail"/>
-    <div *ngIf="customerEmail.touched && customerEmail.invalid">
-      <div *ngIf="customerEmail.errors.validatorTest">
-        <p>An email is required!</p>
+
+    <div class="validation-errors" *ngIf="customerEmail.touched && !customerEmail.valid">
+      <div *ngIf="customerEmail.errors.required">
+        Email is required
+      </div>
+      <div *ngIf="customerEmail.errors.email">
+        Email has to follow email format
+      </div>
+    </div>
+    <div class="validation-errors" *ngIf="customerLastName.touched && !customerLastName.valid">
+      <div *ngIf="customerLastName.errors.required">
+        Lastname is required is required.
+      </div>
+      <div *ngIf="customerLastName.errors.minlength">
+        Lastname has to be 3 charcters long or more.
+      </div>
+    </div>
+    <div class="validation-errors" *ngIf="customerPayment.touched && !customerLastName.valid">
+      <div *ngIf="customerPayment.errors.required">
+        Pick a payment option.
       </div>
     </div>
 
@@ -33,7 +43,7 @@
   </div>
 
 
-  <button type="submit">BUY</button>
+  <button type="submit" [disabled]="!orderForm.valid">BUY</button>
 </form>
 
 
