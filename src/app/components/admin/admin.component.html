@@ -1,12 +1,7 @@
-
 <main>
-  <div>
-    <h3>Welcome, admin</h3>
-  </div>
-
   <section>
+    <h3>Welcome, admin</h3>
     <div>
-      <p>Placed orders:</p>
       <ul *ngFor="let order of orderList">
         <li>
           <h3>Order Id: {{ order.orderId }}</h3>
@@ -20,5 +15,4 @@
       </ul>
     </div>
   </section>
-
 </main>

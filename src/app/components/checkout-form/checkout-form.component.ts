@@ -21,9 +21,9 @@ export class CheckoutFormComponent implements OnInit {
   // värdet för egenskapen är en array, första värdet är startvärdet
   orderForm = this.fb.group({
       customerName: [''],
-      customerLastName: [''],
-      customerEmail: [''],
-      customerPayment: [''],
+      customerLastName: ['', [Validators.required, Validators.minLength(3)]],
+      customerEmail: ['', [Validators.required, validatorTest()]],
+      customerPayment: ['', Validators.required]
   });
 
 
@@ -36,6 +36,13 @@ export class CheckoutFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.cartItems = this.cart.showItems();
+  }
+
+  get customerEmail() {
+    return this.orderForm.get('customerEmail');
+  }
+  get customerLastName() {
+    return this.orderForm.get('customerLastName');
   }
 
   // funktion som körs när man trycker BUY

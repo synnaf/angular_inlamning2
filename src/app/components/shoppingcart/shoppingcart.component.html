@@ -1,4 +1,11 @@
 <main>
+  <section *ngIf="cartItems.length === 0">
+    <div class="shoppingcart">
+      <div class="placeholder-text">
+        <h2>Your shoppingcart is empty!</h2>
+      </div>
+    </div>
+  </section>
   <section *ngIf="cartItems">
     <div *ngFor="let item of cartItems" class="shoppingcart">
       <div class="cart-item">
@@ -9,35 +16,27 @@
           <h4>
             {{ item.movieName }}
           </h4>
-          <span>
-            Quantity: {{ item.quantity }}
-            Sum: {{ item.sum }}
-          </span>
+            <p>Quantity: {{ item.quantity }}</p>
+            <p>Price: {{ item.sum }}</p>
         </div>
         <div class="edit-item">
           <button (click)="increase(item)">+</button>
           <button (click)="decrease(item)">-</button>
         </div>
       </div>
-      <div class="cart-total">
-        <h4>Total: {{ cartTotal }} SEK</h4>
-      </div>
     </div>
+    <div class="cart-total" *ngIf="cartItems.length">
+      <h4>Total: {{ cartTotal }} SEK</h4>
+    </div>
+  </section>
 
-    <!-- <section *ngIf="cartItems.length === 0">
-      <div class="shoppingcart">
-        <div class="placeholder-text">
-          <h4>Cart is empty!</h4>
-        </div>
-      </div>
-    </section> -->
+  <div class="checkout-form" *ngIf="cartItems.length >= 1">
     <div>
-      <button [disabled]="cartItems.length < 1">Checkout</button>
+      <button [disabled]="cartItems.length < 1" (click)="showForm = !showForm;">Checkout</button>
     </div>
-  </section>
+      <app-checkout-form *ngIf="showForm"></app-checkout-form>
+  </div>
 
-  <!-- har laddas checkout-form, borde man skicka med shoppingcart? -->
-  <section>
-    <app-checkout-form></app-checkout-form>
-  </section>
+
+
 </main>

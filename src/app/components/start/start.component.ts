@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-start',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StartComponent implements OnInit {
 
+  searchString = '';
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  search(event: any) {
+
+    this.searchString = event.target.value;
+    console.log(event);
   }
 
 }

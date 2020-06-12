@@ -3,10 +3,25 @@
   <div class="checkout-userInfo">
     <label>Firstname:</label>
     <input type="text" formControlName="customerName"/>
+
     <label>Lastname:</label>
-    <input type="text" formControlName="customerLastName"/>
+    <input type="text" id="customerLastName" formControlName="customerLastName"/>
+
+    <div *ngIf="customerLastName.errors.minlength">
+      A lastname must be at least 3 characters long.
+    </div>
+    <div *ngIf="customerLastName.errors.required">
+      A lastname is required.
+    </div>
+
     <label>Email:</label>
     <input type="email" formControlName="customerEmail"/>
+    <div *ngIf="customerEmail.touched && customerEmail.invalid">
+      <div *ngIf="customerEmail.errors.validatorTest">
+        <p>An email is required!</p>
+      </div>
+    </div>
+
   </div>
 
 
