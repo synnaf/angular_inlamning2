@@ -15,15 +15,20 @@ export class AdminComponent implements OnInit {
 
   ngOnInit(): void {
 
-
     this.orderService.orderList.subscribe((movie: Order[]) => {
       this.orderList = movie;
     });
     this.orderService.showOrders();
 
-
   }
 
+  deleteOrder(orderId: number) {
+    // console.log(order);
+    this.orderService.removeOrder(orderId).subscribe(()=> {
+      this.orderService.showOrders();
+    });
+
+  }
 
 
 }

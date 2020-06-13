@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import IOrder from './IOrder';
 import { Order } from 'src/app/models/Order';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -53,6 +53,17 @@ export class OrderService implements IOrder {
   //   .subscribe((data) => {
   //     console.log(data)
   //   });
+  }
+
+  removeOrder(orderToRemove: number): Observable<{}> {
+    console.log(orderToRemove);
+    const url = 'https://medieinstitutet-wie-products.azurewebsites.net/api/orders' + orderToRemove; // DELETE api/heroes/42
+    console.log(url);
+
+    // ordern tas bort, men hur laddar man om listan??
+    return this.http.delete('https://medieinstitutet-wie-products.azurewebsites.net/api/orders/' + orderToRemove);
+
+
   }
 
 

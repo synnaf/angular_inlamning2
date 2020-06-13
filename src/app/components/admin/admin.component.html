@@ -10,7 +10,7 @@
           <p>Date: {{ order.created | date }}</p>
 
           <button>Edit</button>
-          <button>Delete</button>
+          <button (click)="deleteOrder(order.orderId)">Delete</button>
         </li>
       </ul>
     </div>

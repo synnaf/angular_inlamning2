@@ -5,4 +5,5 @@ export default interface IOrder {
   orderList: Subject<Order[]>;
   showOrders(): void;
   createOrder(order);
+  removeOrder(order);
 }
