@@ -1,40 +1,27 @@
 
 <main>
-      <!-- productCayegory är en lista av objekt
-  productC: [
-  {'categoryId':5,6,7,8 'category': null}
-  ] -->
+
   <div class="categories">
-    <span><input type="checkbox" id="ctg5" name="ctg5" value="5" (click)="displayCategory($event)" />5</span>
-
-    <span><input type="checkbox" id="ctg6" name="ctg6" value="6" (click)="displayCategory($event)" />6</span>
-
-    <span><input type="checkbox" id="ctg7" name="ctg7" value="7"(click)="displayCategory($event)" />7</span>
-
-    <span><input type="checkbox" id="ctg8" name="ctg8" value="8" (click)="displayCategory($event)"/>8</span>
+    <span><input type="checkbox" id="ctg5" name="ctg5" value="5" (click)="displayCategory($event)" />Action</span>
+    <span><input type="checkbox" id="ctg6" name="ctg6" value="6" (click)="displayCategory($event)" />Thriller</span>
+    <span><input type="checkbox" id="ctg7" name="ctg7" value="7"(click)="displayCategory($event)" />Comedy</span>
+    <span><input type="checkbox" id="ctg8" name="ctg8" value="8" (click)="displayCategory($event)"/>Sci Fi</span>
   </div>
 
-<div *ngIf="show">
-  <h2>Hello</h2>
-
+  <section *ngIf="show">
       <!-- Product  -->
       <div *ngFor="let movie of categoryList" class="product-card">
         <div class="placeholder">
           <img src="{{ movie. movieImage }}">
-          <!-- {{ movie.movieName }}
-          {{ movie.moviePrice }} -->
         </div>
         <div class="product-buttons">
-
           <button type="button" (click)="addToCart(movie)">Add to cart</button>
           <button type="button"><a routerLink="{{ movie.movieId }}">About</a></button>
         </div>
       </div>
+  </section>
 
-</div>
-
-  <section *ngIf="movieList">
-
+  <section *ngIf="!this.show"> <!-- *ngIf="movieList" -->
     <!-- Product  -->
     <div *ngFor="let movie of movieList" class="product-card">
       <div class="placeholder">

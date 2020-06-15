@@ -13,7 +13,7 @@ import { MovieDataService } from 'src/app/services/movieData/movie-data.service'
 })
 export class SearchMoviesComponent implements OnInit {
 
-  searchMovies$: Observable<Movie[]>;
+  searchMovies: Observable<Movie[]>;
   private searchTerms = new Subject<string>();
 
 
@@ -23,8 +23,7 @@ export class SearchMoviesComponent implements OnInit {
   ngOnInit(): void {
 
 
-    this.searchMovies$ = this.searchTerms.pipe(
-
+    this.searchMovies = this.searchTerms.pipe(
       // ignore new term if same as previous term
       distinctUntilChanged(),
       // switch to new search observable each time the term changes

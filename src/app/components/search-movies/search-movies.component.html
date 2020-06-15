@@ -6,13 +6,10 @@
   </div>
 
   <div>
-    Here is value:
-    {{ searchInput.value | json }}
 
     <ul class="search-result">
-      <li *ngFor="let movie of searchMovies$ | async" >
-        {{ movie.movieDescription }}
-        {{ movie | json }}
+      <li *ngFor="let movie of searchMovies | async" >
+          {{ movie.name }}
       </li>
     </ul>
 

@@ -3,7 +3,7 @@ import IMovieData from './IMovieData';
 import { Subject, Observable, of } from 'rxjs';
 import { Movie } from 'src/app/models/Movie';
 import { HttpClient } from '@angular/common/http';
-import { tap, catchError } from 'rxjs/operators';
+import { tap, catchError, mapTo } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -37,15 +37,12 @@ export class MovieDataService implements IMovieData {
       return of([]); // returnera tom array
     }
 
-
-    // https://medieinstitutet-wie-products.azurewebsites.net/api/search?=dark&fbclid=IwAR0i7JNPEdbYBSjM2HnIK0xx4293fiepELJxJ00yzYhgIprfulOAqnpfRx8
-
     return this.http.get<Movie[]>(`https://medieinstitutet-wie-products.azurewebsites.net/api/search/?=${term}`)
-    .pipe(tap(x => x.length ?
-        console.log(`found heroes matching "${term}"` ) :
-        console.log(`no heroes matching "${term}"`)),
-        catchError(this.handleError<Movie[]>('searchHeroes', []))
-        );
+    .pipe(tap(sResult => sResult.length ?
+     console.log(sResult, sResult.length) : // x är filmerna
+       console.log(`no heroes matching "${term}"`)),
+       catchError(this.handleError<Movie[]>('searchHeroes', []))
+       );
   }
 
 

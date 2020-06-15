@@ -11,7 +11,7 @@ import { ShoppingcartService } from 'src/app/services/shoppingcart/shoppingcart.
 export class PrintDataComponent implements OnInit {
 
   movieList: Movie[] = [];
-  categoryList = [];
+  categoryList: Movie[] = [];
   show: boolean;
 
   constructor(private service: MovieDataService, private cartService: ShoppingcartService) { }
@@ -38,27 +38,30 @@ export class PrintDataComponent implements OnInit {
       this.show = !this.show;
       // CHANGE THE NAME OF THE BUTTON.
       if(this.show) {
-
+        console.log(event.target.value)
         this.movieList.map((movieObj) => {
-          // kontrollera om den har movieCategory
-          // och om movieCategory.categoryId === 5
           movieObj.movieCategory.forEach((cat) => {
-            // skriv ut kategorierna för alla filmer
-            // om kategorierna stämmer med value på input
+            console.log(cat);
             if(cat.categoryId == event.target.value) {
-              // skriv ut filmerna från array 1?
-              console.log(cat);
-              // skriv en funktion som matchar filmerna som kanske kan köras här?
               this.categoryList.push(movieObj);
             }
           });
         });
         console.log(this.categoryList);
+        return this.categoryList;
       } else {
-        // visa inga filmer?? ta bort filmerna / töm listan
-        console.log(event.target.value);
-    }
-
+        // ta bort filmerna ur listan
+        // här borde jag kunna skriva logik för att:
+        /*
+        Om filmerna inte finns i listan, lägg till dem. Sker ovan?
+        Om filmerna finns i listan, ta bort dem ur listan. Sker här?
+        Om filmen har mer än en kategori - hur ska man hantera detta?
+        Ex. en film hat kategori 5 + 8, dvs. så loopar den ju igenom mer än en egenskap?
+        Arrayen för productCategoryId består av två värden? Eller har den flera objekt?
+        En array med två objekt som har ett varsit objectId
+        När man visar två kategorier så visar den alla filmer
+         */
+         this.categoryList = [];
+      }
   }
-
 }

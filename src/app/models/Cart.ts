@@ -11,7 +11,7 @@ export class Cart {
   movieImage: string;
   movieDescription: string;
   releaseYear: number;
-  movieCategory?: string;
+  movieCategory?: [{categoryId: number, category: string}];
   quantity: number;
   sum: number;
 }

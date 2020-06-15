@@ -2,6 +2,21 @@ main{
   display:flex;
   flex-direction: column;
   align-items: center;
+  .categories {
+    padding-top:30px;
+    margin:30px;
+    span {
+      font-size:1.2rem;
+      font-weight: bold;
+      margin-right:10px;
+      padding-right:10px;
+      border-left:4px solid rgb(92, 92, 201);;
+      input {
+        margin:10px;
+        padding:1.5rem;
+      }
+    }
+  }
   section {
     display:flex;
     flex-direction: row;
