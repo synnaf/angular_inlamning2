@@ -30,21 +30,42 @@ export class PrintDataComponent implements OnInit {
     this.cartService.addToCart(movie);
   }
 
-  displayCategory(event) {
 
+
+
+  // 1. Du behöver först map movie och sen map category listan som är inuti Movie... förstår du?
+
+  // 2. Du behöver get categories och movies. Plocka ut t.ex categoryId från respektive objekt och matcha mot varandra.
+  // 3. Om värdena matchar ska det objektet in i en filtrerad lista
+
+
+
+  displayCategory(event) {
+    
     this.show = !this.show;
     // CHANGE THE NAME OF THE BUTTON.
     if(this.show) {
-      // visa filmer som matchar id
-      console.log(event.target.value);
-      // vad vill jag ska hända här egentligen?
-      // jag vill visa de filmer som har en categoryId = numret på kategorin 
+    let categoryList = [];
+    this.movieList.map((movieObj) => {
+      // kontrollera om den har movieCategory
+      // och om movieCategory.categoryId === 5
+      movieObj.movieCategory.forEach((cat) => {
+        // skriv ut kategorierna för alla filmer
+        // om kategorierna stämmer med value på input
+        if(cat.categoryId == event.target.value) {
+          // skriv ut filmerna från array 1?
+          console.log(cat);
+          // skriv en funktion som matchar filmerna som kanske kan köras här?
+          categoryList.push(movieObj);
+        }
+      });
+     });
 
-
+     console.log(categoryList);
 
     } else {
       // visa inga filmer?? ta bort filmerna / töm listan
-      console.log("event.target.value");
+      console.log(event.target.value);
   }
 
     // detta ska togglas

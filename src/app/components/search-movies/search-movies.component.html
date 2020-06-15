@@ -12,9 +12,11 @@
     <ul class="search-result">
       <li *ngFor="let movie of searchMovies$ | async" >
         {{ movie.movieDescription }}
+        {{ movie | json }}
       </li>
     </ul>
 
   </div>
 
 </section>
+

@@ -6,7 +6,7 @@ export class Movie {
   movieImage: string;
   movieDescription: string;
   releaseYear: number;
-  movieCategory?: string;
+  movieCategory?: [{categoryId: number, category: string}]
 }
 
 
