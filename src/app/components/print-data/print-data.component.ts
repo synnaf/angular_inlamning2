@@ -11,6 +11,7 @@ import { ShoppingcartService } from 'src/app/services/shoppingcart/shoppingcart.
 export class PrintDataComponent implements OnInit {
 
   movieList: Movie[] = [];
+  categoryList = [];
   show: boolean;
 
   constructor(private service: MovieDataService, private cartService: ShoppingcartService) { }
@@ -31,62 +32,33 @@ export class PrintDataComponent implements OnInit {
   }
 
 
-
-
-  // 1. Du behöver först map movie och sen map category listan som är inuti Movie... förstår du?
-
-  // 2. Du behöver get categories och movies. Plocka ut t.ex categoryId från respektive objekt och matcha mot varandra.
-  // 3. Om värdena matchar ska det objektet in i en filtrerad lista
-
-
+// denna lista behöver tömmas varje gånt !this.show så att den börjar om!
 
   displayCategory(event) {
-    
-    this.show = !this.show;
-    // CHANGE THE NAME OF THE BUTTON.
-    if(this.show) {
-    let categoryList = [];
-    this.movieList.map((movieObj) => {
-      // kontrollera om den har movieCategory
-      // och om movieCategory.categoryId === 5
-      movieObj.movieCategory.forEach((cat) => {
-        // skriv ut kategorierna för alla filmer
-        // om kategorierna stämmer med value på input
-        if(cat.categoryId == event.target.value) {
-          // skriv ut filmerna från array 1?
-          console.log(cat);
-          // skriv en funktion som matchar filmerna som kanske kan köras här?
-          categoryList.push(movieObj);
-        }
-      });
-     });
+      this.show = !this.show;
+      // CHANGE THE NAME OF THE BUTTON.
+      if(this.show) {
 
-     console.log(categoryList);
+        this.movieList.map((movieObj) => {
+          // kontrollera om den har movieCategory
+          // och om movieCategory.categoryId === 5
+          movieObj.movieCategory.forEach((cat) => {
+            // skriv ut kategorierna för alla filmer
+            // om kategorierna stämmer med value på input
+            if(cat.categoryId == event.target.value) {
+              // skriv ut filmerna från array 1?
+              console.log(cat);
+              // skriv en funktion som matchar filmerna som kanske kan köras här?
+              this.categoryList.push(movieObj);
+            }
+          });
+        });
+        console.log(this.categoryList);
+      } else {
+        // visa inga filmer?? ta bort filmerna / töm listan
+        console.log(event.target.value);
+    }
 
-    } else {
-      // visa inga filmer?? ta bort filmerna / töm listan
-      console.log(event.target.value);
-  }
-
-    // detta ska togglas
-    // för varje movieobj
-    // this.movieList.map((movieObj) => {
-    //   // kontrollera om den har movieCategory
-    //   // och om movieCategory.categoryId === 5
-
-    //   movieObj.movieCategory.forEach((cat) => {
-    //     // skriv ut kategorierna för alla filmer
-    //     console.log(cat);
-    //   });
-
-    //     //   // om kategorierna stämmer med value på input
-    //     //   if(cat.categoryId == event.target.value) {
-    //     //     // skriv ut filmerna från array 1?
-    //     //     console.log(cat);
-    //     //     return cat
-    //     //   }
-
-    //  });
   }
 
 }
