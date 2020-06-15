@@ -11,6 +11,7 @@ import { ShoppingcartService } from 'src/app/services/shoppingcart/shoppingcart.
 export class PrintDataComponent implements OnInit {
 
   movieList: Movie[] = [];
+  show: boolean;
 
   constructor(private service: MovieDataService, private cartService: ShoppingcartService) { }
 
@@ -27,6 +28,44 @@ export class PrintDataComponent implements OnInit {
   addToCart(movie: Movie) {
     console.log(movie);
     this.cartService.addToCart(movie);
+  }
+
+  displayCategory(event) {
+
+    this.show = !this.show;
+    // CHANGE THE NAME OF THE BUTTON.
+    if(this.show) {
+      // visa filmer som matchar id
+      console.log(event.target.value);
+      // vad vill jag ska hända här egentligen?
+      // jag vill visa de filmer som har en categoryId = numret på kategorin 
+
+
+
+    } else {
+      // visa inga filmer?? ta bort filmerna / töm listan
+      console.log("event.target.value");
+  }
+
+    // detta ska togglas
+    // för varje movieobj
+    // this.movieList.map((movieObj) => {
+    //   // kontrollera om den har movieCategory
+    //   // och om movieCategory.categoryId === 5
+
+    //   movieObj.movieCategory.forEach((cat) => {
+    //     // skriv ut kategorierna för alla filmer
+    //     console.log(cat);
+    //   });
+
+    //     //   // om kategorierna stämmer med value på input
+    //     //   if(cat.categoryId == event.target.value) {
+    //     //     // skriv ut filmerna från array 1?
+    //     //     console.log(cat);
+    //     //     return cat
+    //     //   }
+
+    //  });
   }
 
 }

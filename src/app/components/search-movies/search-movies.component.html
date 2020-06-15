@@ -1,0 +1,20 @@
+<section>
+  <div>
+    <!-- fånga värdet av ett input field och skicka det till min service -->
+    <input #searchInput type="text" placeholder="Search" class="form-control"  (input)="search(searchInput.value)"/>
+    <!-- <button type="button" (click)="search(searchInput.value)">Search</button> -->
+  </div>
+
+  <div>
+    Here is value:
+    {{ searchInput.value | json }}
+
+    <ul class="search-result">
+      <li *ngFor="let movie of searchMovies$ | async" >
+        {{ movie.movieDescription }}
+      </li>
+    </ul>
+
+  </div>
+
+</section>

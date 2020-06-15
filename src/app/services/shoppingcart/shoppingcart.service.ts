@@ -31,6 +31,7 @@ export class ShoppingcartService implements IShoppingcart {
         });
         return; // varför?
     }
+
     this.totalSum();
     this.increaseCartItem(this.movieInCart);
   }

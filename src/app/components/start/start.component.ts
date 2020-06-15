@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, FormArray, Validators } from '@angular/forms';
+import { SearchService } from 'src/app/services/search/search.service';
+import { Movie } from 'src/app/models/Movie';
+import { MovieDataService } from 'src/app/services/movieData/movie-data.service';
 
 @Component({
   selector: 'app-start',
@@ -8,17 +11,15 @@ import { FormControl } from '@angular/forms';
 })
 export class StartComponent implements OnInit {
 
-  searchString = '';
+  searchList: Movie[] = [];
 
-  constructor() { }
+  constructor(private fb: FormBuilder,
+              private searchService: MovieDataService
+  ) { }
 
   ngOnInit(): void {
   }
 
-  search(event: any) {
 
-    this.searchString = event.target.value;
-    console.log(event);
-  }
 
 }

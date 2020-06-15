@@ -5,16 +5,16 @@ import { ShoppingcartComponent } from './components/shoppingcart/shoppingcart.co
 import { CheckoutFormComponent } from './components/checkout-form/checkout-form.component';
 import { StartComponent } from './components/start/start.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 
 const routes: Routes = [
   { path: '', component: StartComponent },
   { path: 'products', component: PrintDataComponent},
   { path: 'admin', component: AdminComponent},
-  // { path: 'products/:id', component: ProductDetailsComponent},
   { path: 'shoppingcart', component: ShoppingcartComponent },
   { path: 'checkout', component: CheckoutFormComponent },
-  // { path: '**', component: NotFoundComponent }
+  { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({

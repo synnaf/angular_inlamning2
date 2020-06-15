@@ -1,3 +1,4 @@
+
 export class Movie {
   movieName: string;
   movieId: number;
@@ -7,3 +8,6 @@ export class Movie {
   releaseYear: number;
   movieCategory?: string;
 }
+
+
+// movieCategory?: { categoryId: number, category: string };

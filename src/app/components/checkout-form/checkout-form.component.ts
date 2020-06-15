@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { validatorTest } from '../../validators/validatorTest';
 import { Order } from 'src/app/models/Order';
 import { ShoppingcartService } from 'src/app/services/shoppingcart/shoppingcart.service';
 import { OrderService } from 'src/app/services/order/order.service';

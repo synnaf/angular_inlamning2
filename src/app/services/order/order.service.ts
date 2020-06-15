@@ -10,13 +10,11 @@ import { HttpClient } from '@angular/common/http';
 
 export class OrderService implements IOrder {
 
-  // orderList prenumererar på ämnen av typen Order-Array
   orderList: Subject<Order[]> = new Subject<Order[]>();
 
   constructor(private http: HttpClient) { }
 
   showOrders(): void {
-    // skickar en request efter mitt companyId
 
     this.http.get('https://medieinstitutet-wie-products.azurewebsites.net/api/orders?companyId=666')
     .subscribe((orderData: any) => {
@@ -38,34 +36,24 @@ export class OrderService implements IOrder {
 
   createOrder(order: Order) {
 
-    // visar order som kommer ifrån placeOrder > newOrder
     console.log(order);
 
-  //   this.http.post('https://medieinstitutet-wie-products.azurewebsites.net/api/orders', {
-  //     companyId: 666,
-  //     created: order.created,
-  //     createdBy: order.createdBy,
-  //     paymentMethod: order.paymentMethod,
-  //     totalPrice: order.totalPrice,
-  //     status: order.status,
-  //     orderRows: order.products,
-  //   })
-  //   .subscribe((data) => {
-  //     console.log(data)
-  //   });
+    this.http.post('https://medieinstitutet-wie-products.azurewebsites.net/api/orders', {
+      companyId: 666,
+      created: order.created,
+      createdBy: order.createdBy,
+      paymentMethod: order.paymentMethod,
+      totalPrice: order.totalPrice,
+      status: order.status,
+      orderRows: order.products,
+  }).subscribe((orderData) => {
+      console.log(orderData)
+    }); // order kräver en subscribe
   }
 
   removeOrder(orderToRemove: number): Observable<{}> {
-    console.log(orderToRemove);
-    const url = 'https://medieinstitutet-wie-products.azurewebsites.net/api/orders' + orderToRemove; // DELETE api/heroes/42
-    console.log(url);
-
-    // ordern tas bort, men hur laddar man om listan??
     return this.http.delete('https://medieinstitutet-wie-products.azurewebsites.net/api/orders/' + orderToRemove);
-
-
   }
-
 
 }
 
