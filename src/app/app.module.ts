@@ -11,6 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AdminComponent } from './components/admin/admin.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { SearchMoviesComponent } from './components/search-movies/search-movies.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { SearchMoviesComponent } from './components/search-movies/search-movies.
     StartComponent,
     AdminComponent,
     NotFoundComponent,
-    SearchMoviesComponent
+    SearchMoviesComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,

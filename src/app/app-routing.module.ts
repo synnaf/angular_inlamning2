@@ -6,11 +6,13 @@ import { CheckoutFormComponent } from './components/checkout-form/checkout-form.
 import { StartComponent } from './components/start/start.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
 
 
 const routes: Routes = [
   { path: '', component: StartComponent },
   { path: 'products', component: PrintDataComponent},
+  { path: 'products/:id', component: ProductDetailsComponent},
   { path: 'admin', component: AdminComponent},
   { path: 'shoppingcart', component: ShoppingcartComponent },
   { path: 'checkout', component: CheckoutFormComponent },

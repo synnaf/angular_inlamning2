@@ -1,19 +1,19 @@
 <section>
-  <div>
-    <!-- fånga värdet av ett input field och skicka det till min service -->
-    <input #searchInput type="text" placeholder="Search" class="form-control"  (input)="search(searchInput.value)"/>
-    <!-- <button type="button" (click)="search(searchInput.value)">Search</button> -->
+  <div class="searchInput">
+    <input #searchInput type="text" placeholder="Search" class="form-control" placeholder="Search for a movie...">
+    <button type="button" (click)="search(searchInput.value); searchInput.value=''">Search</button>
   </div>
 
-  <div>
-
-    <ul class="search-result">
+  <div class="searchResult">
+    <ul>
       <li *ngFor="let movie of searchMovies | async" >
-          {{ movie.name }}
+          <a routerLink="/products/{{ movie.id }}">
+            <p>{{ movie.name }}</p>
+            <p>Read more</p>
+          </a>
       </li>
     </ul>
-
   </div>
-
 </section>
+
 

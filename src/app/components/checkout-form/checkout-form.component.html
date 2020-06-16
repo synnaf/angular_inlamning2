@@ -1,14 +1,18 @@
 
-<form  [formGroup]="orderForm" (ngSubmit)="placeOrder()">
+<form  [formGroup]="orderForm" (ngSubmit)="placeOrder();
+customerEmail.value='' ;
+customerLastName.value='';
+customerName.value='';
+customerPayment.value='';  ">
   <div class="checkout-userInfo">
     <label>Firstname:</label>
-    <input type="text" formControlName="customerName"/>
+    <input type="text" formControlName="customerName" #customerName/>
 
     <label>Lastname:</label>
-    <input type="text" id="customerLastName" formControlName="customerLastName"/>
+    <input type="text" id="customerLastName" formControlName="customerLastName" #customerLastName/>
 
     <label>Email:</label>
-    <input type="email" formControlName="customerEmail"/>
+    <input type="email" formControlName="customerEmail" #customerEmail />
 
     <div class="validation-errors" *ngIf="customerEmail.touched && !customerEmail.valid">
       <div *ngIf="customerEmail.errors.required">
@@ -37,12 +41,13 @@
 
   <div class="checkout-userPayment">
     <label>Payment method:</label>
-    <span><input type="radio" formControlName="customerPayment" value="visa" />Visa</span>
-    <span><input type="radio" formControlName="customerPayment" value="mastercard" />MasterCard</span>
-    <span><input type="radio" formControlName="customerPayment" value="faktura" />Faktura</span>
+    <span><input type="radio" formControlName="customerPayment" value="visa" #customerPayment />Visa</span>
+    <span><input type="radio" formControlName="customerPayment" value="mastercard" #customerPayment />MasterCard</span>
+    <span><input type="radio" formControlName="customerPayment" value="faktura" #customerPayment />Faktura</span>
   </div>
 
 
   <button type="submit" [disabled]="!orderForm.valid">BUY</button>
 </form>
+
 

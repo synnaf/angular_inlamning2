@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Order } from 'src/app/models/Order';
 import { ShoppingcartService } from 'src/app/services/shoppingcart/shoppingcart.service';
 import { OrderService } from 'src/app/services/order/order.service';
-import { Cart } from 'src/app/models/Cart';
 
 @Component({
   selector: 'app-checkout-form',
@@ -12,12 +11,9 @@ import { Cart } from 'src/app/models/Cart';
 })
 export class CheckoutFormComponent implements OnInit {
   cartItems;
-  // tom lista som följer Order modellen
-  orders;
-  //
+  // orders;
   orderList: Order[] = [];
 
-  // värdet för egenskapen är en array, första värdet är startvärdet
   orderForm = this.fb.group({
       customerName: [''],
       customerLastName: ['', [Validators.required, Validators.minLength(3)]],
@@ -25,8 +21,6 @@ export class CheckoutFormComponent implements OnInit {
       customerPayment: ['', Validators.required]
   });
 
-
-  // i kontruktoprn lägger vi till vår service formbuilder
   constructor(
     private fb: FormBuilder,
     private cart: ShoppingcartService,
@@ -47,13 +41,10 @@ export class CheckoutFormComponent implements OnInit {
     return this.orderForm.get('customerPayment') as FormControl;
   }
 
-  // funktion som körs när man trycker BUY
   placeOrder() {
-
     const customerDetails = this.orderForm.value;
     const orderDate = new Date();
 
-    // newOrder är infon från formuläret
     const newOrder = {
       companyId: 666,
       createdBy: customerDetails.customerEmail,
@@ -63,20 +54,16 @@ export class CheckoutFormComponent implements OnInit {
       status: 0,
       products: []
     };
-
-
     const detailsProducts = this.cartItems.map((movie) => {
       return { productId: movie.movieId, amount: movie.quantity, orderId: 22 };
     });
-
-
-
     detailsProducts.forEach((orderedProduct) => {
       newOrder.products.push(orderedProduct);
     });
-
-    console.log(newOrder);
     this.order.createOrder(newOrder);
+    customerDetails.customerEmail = "";
+    customerDetails.customerName = "";
+    customerDetails.customerLastName = "";
 
   }
 

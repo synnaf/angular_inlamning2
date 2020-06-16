@@ -8,6 +8,3 @@ export class Movie {
   releaseYear: number;
   movieCategory?: [{categoryId: number, category: string}];
 }
-
-
-// movieCategory?: { categoryId: number, category: string };

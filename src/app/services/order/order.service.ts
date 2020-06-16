@@ -35,9 +35,6 @@ export class OrderService implements IOrder {
   }
 
   createOrder(order: Order) {
-
-    console.log(order);
-
     this.http.post('https://medieinstitutet-wie-products.azurewebsites.net/api/orders', {
       companyId: 666,
       created: order.created,
@@ -48,7 +45,7 @@ export class OrderService implements IOrder {
       orderRows: order.products,
   }).subscribe((orderData) => {
       console.log(orderData)
-    }); // order kräver en subscribe
+    });
   }
 
   removeOrder(orderToRemove: number): Observable<{}> {

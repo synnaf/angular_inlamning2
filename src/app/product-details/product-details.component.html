@@ -1,0 +1,19 @@
+<main>
+  <section>
+    <h2> {{ selectedMovie.movieName }} </h2>
+    <div class="product-card">
+      <div class="placeholder">
+        <img src="{{ selectedMovie.movieImage }}">
+      </div>
+      <div class="extended-info">
+        <span> {{ selectedMovie.movieDescription }} </span>
+        <p class="other-info"> {{ selectedMovie.moviePrice }} kr</p>
+        <p class="other-info"> Released in: {{ selectedMovie.releaseYear }}.</p>
+      </div>
+      <div class="product-buttons">
+        <button type="button">Add to cart</button>
+        <button> <a routerLink="/products">&larr;Back</a></button>
+      </div>
+    </div>
+  </section>
+</main>

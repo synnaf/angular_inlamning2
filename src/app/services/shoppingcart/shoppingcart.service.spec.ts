@@ -1,18 +1,18 @@
-// import { TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 
-// import { ShoppingcartService } from './shoppingcart.service';
-// import { Movie } from 'src/app/models/Movie';
+import { ShoppingcartService } from './shoppingcart.service';
+import { Movie } from 'src/app/models/Movie';
 
-// describe('ShoppingcartService', () => {
-//   let service: ShoppingcartService;
+describe('ShoppingcartService', () => {
+  let service: ShoppingcartService;
 
-//   beforeEach(() => {
-//     TestBed.configureTestingModule({});
-//     service = TestBed.inject(ShoppingcartService);
-//   });
+  beforeEach(() => {
+    TestBed.configureTestingModule({});
+    service = TestBed.inject(ShoppingcartService);
+  });
 
-//   it('should be created', () => {
-//     expect(service).toBeTruthy();
-//   });
+  it('should be created', () => {
+    expect(service).toBeTruthy();
+  });
 
-// });
+});
