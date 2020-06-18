@@ -1,0 +1,19 @@
+<section>
+  <div class="searchInput">
+    <input #searchInput type="text" placeholder="Search" class="form-control" placeholder="Search for a movie...">
+    <button type="button" (click)="search(searchInput.value); searchInput.value=''">Search</button>
+  </div>
+
+  <div class="searchResult">
+    <ul>
+      <li *ngFor="let movie of searchMovies | async" >
+          <a routerLink="products/{{ movie.id }}">
+            <p>{{ movie.name }}</p>
+            <p>Read more</p>
+          </a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+

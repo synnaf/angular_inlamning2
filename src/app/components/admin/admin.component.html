@@ -1,0 +1,17 @@
+<main>
+  <section class="admin-section">
+    <h3>Welcome, admin</h3>
+    <div>
+      <ul *ngFor="let order of orderList">
+        <li>
+          <h3>Order Id: {{ order.orderId }}</h3>
+          <h5>Status: {{ order.status }}</h5>
+          <p>Customer: {{ order.createdBy }}</p>
+          <p>Date: {{ order.created | date }}</p>
+
+          <button class="deleteOrder" (click)="deleteOrder(order.orderId)">Delete</button>
+        </li>
+      </ul>
+    </div>
+  </section>
+</main>

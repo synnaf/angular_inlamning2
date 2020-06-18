@@ -1,0 +1,53 @@
+
+<form  [formGroup]="orderForm" (ngSubmit)="placeOrder();
+customerEmail.value='' ;
+customerLastName.value='';
+customerName.value='';
+customerPayment.value='';  ">
+  <div class="checkout-userInfo">
+    <label>Firstname:</label>
+    <input type="text" formControlName="customerName" #customerName/>
+
+    <label>Lastname:</label>
+    <input type="text" id="customerLastName" formControlName="customerLastName" #customerLastName/>
+
+    <label>Email:</label>
+    <input type="email" formControlName="customerEmail" #customerEmail />
+
+    <div class="validation-errors" *ngIf="customerEmail.touched && !customerEmail.valid">
+      <div *ngIf="customerEmail.errors.required">
+        Email is required
+      </div>
+      <div *ngIf="customerEmail.errors.email">
+        Email has to follow email format
+      </div>
+    </div>
+    <div class="validation-errors" *ngIf="customerLastName.touched && !customerLastName.valid">
+      <div *ngIf="customerLastName.errors.required">
+        Lastname is required is required.
+      </div>
+      <div *ngIf="customerLastName.errors.minlength">
+        Lastname has to be 3 charcters long or more.
+      </div>
+    </div>
+    <div class="validation-errors" *ngIf="customerPayment.touched && !customerLastName.valid">
+      <div *ngIf="customerPayment.errors.required">
+        Pick a payment option.
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="checkout-userPayment">
+    <label>Payment method:</label>
+    <span><input type="radio" formControlName="customerPayment" value="visa" #customerPayment />Visa</span>
+    <span><input type="radio" formControlName="customerPayment" value="mastercard" #customerPayment />MasterCard</span>
+    <span><input type="radio" formControlName="customerPayment" value="faktura" #customerPayment />Faktura</span>
+  </div>
+
+
+  <button type="submit" class="checkout-Button" [disabled]="!orderForm.valid">BUY</button>
+</form>
+
+

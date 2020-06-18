@@ -1,0 +1,40 @@
+<main>
+  <section *ngIf="cartItems.length === 0">
+    <div class="shoppingcart">
+      <div class="placeholder-text">
+        <h2>Your shoppingcart is empty!</h2>
+      </div>
+    </div>
+  </section>
+  <section *ngIf="cartItems">
+    <div *ngFor="let item of cartItems" class="shoppingcart">
+      <div class="cart-item">
+        <div class="placeholder">
+          <img src="{{ item.movieImage }}">
+        </div>
+        <div class="item-info">
+          <h4>
+            {{ item.movieName }}
+          </h4>
+            <p>Quantity: {{ item.quantity }}</p>
+            <p>Price: {{ item.sum }}</p>
+        </div>
+        <div class="edit-item">
+          <button (click)="increase(item)">+</button>
+          <button (click)="decrease(item)">-</button>
+        </div>
+      </div>
+    </div>
+    <div class="cart-total" *ngIf="cartItems.length">
+      <h4>Total: {{ cartTotal }} SEK</h4>
+    </div>
+  </section>
+
+  <div class="checkout-form" *ngIf="cartItems.length >= 1">
+    <div>
+      <button [disabled]="cartItems.length < 1" (click)="showForm = !showForm;">Checkout</button>
+    </div>
+      <app-checkout-form *ngIf="showForm"></app-checkout-form>
+  </div>
+
+</main>
